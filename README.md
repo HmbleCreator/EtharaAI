@@ -80,8 +80,14 @@ Dashboard:
 
 - `GET /api/dashboard`
 
+## Live Deployment
+
+- Live app: https://etharaai-production-711d.up.railway.app
+- Railway deployment: https://railway.com/project/d8f21dcd-0014-4810-b668-346cffbfd9ee/service/c9b1bee4-2261-4e88-9b65-0591b18afe0f
+- GitHub repo: https://github.com/HmbleCreator/EtharaAI
+
 ## Submission
 
-- Live URL: add Railway URL after deployment
-- GitHub repo: add repository URL after pushing
+- Live URL: https://etharaai-production-711d.up.railway.app
+- GitHub repo: https://github.com/HmbleCreator/EtharaAI
 - README: this file
