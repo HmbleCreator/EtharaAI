@@ -1,0 +1,23 @@
+{
+  "name": "ethara-team-task-manager",
+  "version": "1.0.0",
+  "description": "A full-stack team task manager with projects, assignments, progress tracking, and role-based access control.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js"
+  },
+  "keywords": [
+    "task-manager",
+    "rbac",
+    "sqlite",
+    "railway"
+  ],
+  "author": "",
+  "license": "MIT"
+}
