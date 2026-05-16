@@ -579,7 +579,7 @@ function serveStatic(req, res, pathname) {
   };
   res.writeHead(200, {
     "content-type": types[extname(resolved)] || "application/octet-stream",
-    "cache-control": resolved.endsWith("index.html") ? "no-store" : "public, max-age=3600"
+    "cache-control": "no-store"
   });
   res.end(readFileSync(resolved));
 }
