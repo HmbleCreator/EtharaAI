@@ -208,7 +208,7 @@ function render() {
       </header>
       <div class="app-grid">
         <aside class="sidebar">
-          ${navButton("dashboard", "Dashboard", state.dashboard?.totals?.overdue || 0)}
+          ${navButton("dashboard", "Dashboard", state.dashboard?.totals?.totalTasks || 0)}
           ${navButton("projects", "Projects", state.projects.length)}
           ${navButton("team", "Team", state.users.length)}
         </aside>

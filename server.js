@@ -109,6 +109,36 @@ function seedAdminFromEnv() {
 
 seedAdminFromEnv();
 
+const demoMembers = [
+  ["Aarav Mehta", "aarav@etharaai.app"],
+  ["Maya Iyer", "maya@etharaai.app"],
+  ["Kabir Sharma", "kabir@etharaai.app"],
+  ["Nisha Rao", "nisha@etharaai.app"],
+  ["Rohan Kapoor", "rohan@etharaai.app"]
+];
+
+function seedDemoMembersFromEnv() {
+  if (String(process.env.SEED_DEMO_MEMBERS || "").toLowerCase() !== "true") return;
+  const password = String(process.env.SEED_DEMO_MEMBER_PASSWORD || "");
+  if (password.length < 8) {
+    console.warn("Skipping demo members: SEED_DEMO_MEMBER_PASSWORD must be at least 8 characters.");
+    return;
+  }
+  const insert = db.prepare("INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, 'member')");
+  const update = db.prepare("UPDATE users SET name = ?, password_hash = ?, role = 'member' WHERE email = ?");
+  const find = db.prepare("SELECT id FROM users WHERE email = ?");
+  for (const [name, email] of demoMembers) {
+    const existing = find.get(email);
+    if (existing) {
+      update.run(name, hashPassword(password), email);
+    } else {
+      insert.run(name, email, hashPassword(password));
+    }
+  }
+}
+
+seedDemoMembersFromEnv();
+
 const b64 = (value) => Buffer.from(JSON.stringify(value)).toString("base64url");
 
 function signToken(user) {

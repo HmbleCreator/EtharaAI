@@ -87,6 +87,15 @@ Dashboard:
 - GitHub repo: https://github.com/HmbleCreator/EtharaAI
 - Demo Admin login: `admin@etharaai.app`
 - Demo Admin password: `EtharaAI@2026`
+- Demo Member password for all test members: `MemberDemo@2026`
+
+Demo member accounts:
+
+- `aarav@etharaai.app`
+- `maya@etharaai.app`
+- `kabir@etharaai.app`
+- `nisha@etharaai.app`
+- `rohan@etharaai.app`
 
 ## Submission
 
