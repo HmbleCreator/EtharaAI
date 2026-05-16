@@ -90,6 +90,25 @@ function verifyPassword(password, stored) {
   return prev.length === next.length && timingSafeEqual(prev, next);
 }
 
+function seedAdminFromEnv() {
+  const email = normalizeEmail(process.env.SEED_ADMIN_EMAIL);
+  const password = String(process.env.SEED_ADMIN_PASSWORD || "");
+  const name = clean(process.env.SEED_ADMIN_NAME || "Ethara Admin");
+  if (!email || !password) return;
+  if (!isEmail(email) || password.length < 8) {
+    console.warn("Skipping seeded admin: SEED_ADMIN_EMAIL or SEED_ADMIN_PASSWORD is invalid.");
+    return;
+  }
+  const existing = db.prepare("SELECT id FROM users WHERE email = ?").get(email);
+  if (existing) {
+    db.prepare("UPDATE users SET name = ?, password_hash = ?, role = 'admin' WHERE id = ?").run(name, hashPassword(password), existing.id);
+    return;
+  }
+  db.prepare("INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, 'admin')").run(name, email, hashPassword(password));
+}
+
+seedAdminFromEnv();
+
 const b64 = (value) => Buffer.from(JSON.stringify(value)).toString("base64url");
 
 function signToken(user) {

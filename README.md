@@ -85,6 +85,8 @@ Dashboard:
 - Live app: https://etharaai-production-711d.up.railway.app
 - Railway deployment: https://railway.com/project/d8f21dcd-0014-4810-b668-346cffbfd9ee/service/c9b1bee4-2261-4e88-9b65-0591b18afe0f
 - GitHub repo: https://github.com/HmbleCreator/EtharaAI
+- Demo Admin login: `admin@etharaai.app`
+- Demo Admin password: `EtharaAI@2026`
 
 ## Submission
 
