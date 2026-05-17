@@ -5,7 +5,7 @@ A production-ready full-stack task manager for project teams. Users can sign up,
 ## Features
 
 - Signup and login with salted password hashing and JWT sessions
-- First registered user becomes `admin`; later users start as `member`
+- All signups default to `member`; Admin is bootstrapped via `SEED_ADMIN_EMAIL` env var
 - Admin-only project creation and global role management
 - Project-level Admin/Member access for team management and task assignment
 - Task status, priority, assignee, due-date, overdue, and progress tracking

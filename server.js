@@ -302,9 +302,7 @@ route("POST", "/api/auth/signup", async (req, res) => {
   const existing = db.prepare("SELECT id FROM users WHERE email = ?").get(email);
   if (existing) return fail(res, 409, "An account with that email already exists.");
 
-  const count = db.prepare("SELECT COUNT(*) AS count FROM users").get().count;
-  const role = count === 0 ? "admin" : "member";
-  const result = db.prepare("INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, ?)").run(name, email, hashPassword(password), role);
+  const result = db.prepare("INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, 'member')").run(name, email, hashPassword(password));
   const user = db.prepare(`SELECT ${userSelect} FROM users WHERE id = ?`).get(Number(result.lastInsertRowid));
   json(res, 201, { user, token: signToken(user) });
 });
